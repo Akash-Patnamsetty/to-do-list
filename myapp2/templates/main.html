@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    {% load static %}
+    <style>
+        *{
+            background-color: rgb(4, 3, 18);
+            color: rgb(141, 156, 168);
+            text-transform: capitalize;
+            text-decoration: none;
+
+        }
+        .mainhead{
+            display: flex;
+            justify-content: space-evenly;
+        }
+        span{
+            color: whitesmoke;
+            font-size: 30px;
+        }
+        h1{
+            color: rgb(222, 130, 17);
+            box-shadow: 2px 2px 100px 2px rgb(4, 3, 18) ;
+            background-color:rgb(4, 3, 18) ;
+            font-size: 20px;
+            margin-right:50%;
+        }
+        i{
+            color: whitesmoke;
+            border: 2px solid whitesmoke;
+            border-radius: 2px;
+        }
+      
+        button{
+            font-size: 20px;
+            border-radius: 5px;
+            height: 50px;
+            width: 55%;
+            cursor: pointer;
+            margin-left: 50px;
+            margin-top: 20px;
+            border: 2px solid whitesmoke;
+        }
+        button:hover{
+            background-color: rgb(128, 171, 9);
+            color: whitesmoke;
+            box-shadow: 5px 2px 50px 2px rgb(128, 171, 9);
+
+        }
+        .mainhead2{
+            display: flex;
+            justify-content: space-evenly;
+        }
+        .main1{
+           display: grid;
+        }
+        .h1tag{
+            color: rgb(175, 154, 45);
+            text-shadow: 7px 2px 10px rgb(228, 173, 23) ;
+            padding-bottom: 20px;
+            margin-left:5%;
+        }
+        #task1{
+            color: whitesmoke;
+            margin-top: 20px;
+            margin-left:10%;
+        }
+        .b3:hover{
+            color: red;
+            background-color: rgb(240, 86, 9);
+            box-shadow: 5px 2px 50px 2px rgb(254, 4, 4);
+
+        }
+        .a2{
+            position: sticky;
+            top: 30px;
+            left: 90%;
+            width: 5%;
+            background-color: transparent;
+            color: rgb(46, 222, 10);
+            border: 2px solid whitesmoke;
+            color: whitesmoke;
+            font-size: 30px;
+            height: 40px;
+            padding-left: 20px;
+            padding-top: 5px;
+            border-radius: 8px;
+
+
+        }
+        .a2:hover{
+            background-color: red;
+            box-shadow: 5px 2px 50px 2px red;
+
+        }
+        .b1{
+            display: flex;
+        }
+        .a1{
+            position: sticky;
+            top: 30px;
+            left: 76%;
+            width: 9%;
+            background-color: transparent;
+            color: red;
+            border: 2px solid whitesmoke;
+            color: whitesmoke;
+            font-size: 30px;
+            height: 40px;
+            padding-left: 10px;
+            padding-top: 5px;
+            border-radius: 8px;
+
+            
+        }
+        .a1:hover{
+            background-color: springgreen;
+            box-shadow: 5px 2px 50px 2px springgreen;
+
+        }
+        .an2{
+            position: relative;
+            top: 30px;
+            left: 85%;
+            width: 10%;
+
+        }
+        h3{
+            text-align: center;
+            font-size: 30px;
+        }
+
+    </style>
+</head>
+<body>
+<h3>welcome&nbsp; <span>{{user}}</span></h3>
+
+    <div class="b1">
+     <a href="{% url 'add_task' %}" class="a1"> add task</a><a href="/exit_user/" class="a2">exit</a>
+    </div>
+<br><br><br>
+    {% for i in task %}
+<br><br>
+<div class="main1">
+    <div class="mainhead"> 
+    <h1><span>title&nbsp; :&nbsp; </span>{{i.title}}</h1>
+    <div class="mainhead2">
+    <button class="b2"><a href="/edit_task/{{i.id}}" ><i class="fa-solid fa-pen-to-square"></i></a></button>
+    <button class="b3"><a href="/delete_task/{{i.id}}" ><i class="fa-solid fa-trash"></i></a></button>
+</div>
+</div>
+
+<span id="task1">task&nbsp; :<h1 class="h1tag">{{i.task}}</h1></span>
+<br><br><br><br><br><br>
+
+    {% endfor %}
+</div>
+</body>
+</html>

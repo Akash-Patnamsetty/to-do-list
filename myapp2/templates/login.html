@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/signin.css' %}">
+    <style>
+        *{
+    background-color: rgb(4, 3, 18);
+    color: rgb(141, 156, 168);
+    text-transform: capitalize;
+    list-style: none;
+    
+
+}
+h1{
+    color: whitesmoke;
+    text-align: center;
+    margin-top:5%;
+    font-weight: 900;
+}
+h2{
+    color: whitesmoke;
+    text-align: center;
+    margin-top: 2%;
+    font-weight: 500;
+
+}
+form{
+    margin-top:2px;
+    padding-top: 3%;
+    align-items: center;
+    display:block;
+    padding-left: 40%;
+    font-weight: 500;
+    font-size:large;
+    color: wheat;
+
+
+
+}
+input{
+    height: 30px;
+    border-radius: 3%;
+    border: 2px solid whitesmoke;
+    color: whitesmoke;
+    font-size:large;
+    font-weight: 700;
+}
+button{
+    margin-left: 10%;
+    height: 40px;
+    width: 100px;
+    border: 2px solid whitesmoke;
+    cursor: pointer;
+    color: whitesmoke;
+    border-radius: 5%;
+    font: 800;
+    font-size: 15px;
+    position: relative;
+    top: 2%;
+
+}
+button:hover{
+    box-shadow: 2px 2px 100px 2px whitesmoke;
+    background-color: green;
+    transition: 0.8s ease-in-out;
+
+}
+a{
+    color: whitesmoke;
+    margin-bottom: 10px;
+    margin-left: 12%;
+    text-decoration: none;
+    position: relative;
+    top: 5%;
+    font-weight: 800;
+}
+a:hover{
+    color: green;
+    transition: .5s ease-in-out;
+    box-shadow: 1px 1px 100px 2px greenyellow;
+
+}
+span{
+    color: wheat;
+    margin-left: 14%;
+    margin-top: 30%;
+    position: relative;
+    top: 7%;
+}
+li{
+    text-align: center;
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+    </style>
+</head>
+<body>
+        <h1>welcome</h1>
+         <h2>login to  create your TO-DO-LIST</h2>
+         {% if messages%}
+    <ul>
+        {% for msg in messages%}
+        {% if msg.tags == "error"%}
+        <li style="color: red;">{{msg}}</li>
+        {% endif %}
+        {% if msg.tags == "success"%}
+        <li style="color: green;">{{msg}}</li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+    {% endif %}
+        <form action="" method="post">{% csrf_token %}
+        username: <input type="text" name="username" autocomplete="off" placeholder="username"><br><br>
+        password: <input type="password" name="password" autocomplete="off" placeholder="password"><br><br><br>
+        <button type="submit">login</button><br><br> <span>(or)</span><br><br>
+        <a href="{% url 'registration' %}">sign up</a>
+    </form>
+    
+</body>
+</html>
